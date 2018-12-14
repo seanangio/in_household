@@ -1,0 +1,48 @@
+div.outer {
+    position: fixed;
+    top: 41px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+hr {
+    border-color: gray;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#hist_panel {
+    /* Appearance */
+    background-color: white;
+    padding: 0 20px 20px 20px;
+    cursor: move;
+    /* Fade out while not hovering */
+    opacity: 1.0;
+    zoom: 0.9;
+    transition: opacity 500ms 1s;
+}
+
+#cite {
+    position: absolute;
+    bottom: 1px;
+    right: 45px;
+    font-size: 11px;
+    color: black;
+}
+
+.legend {
+    font-family: "Open Sans", sans-serif;   
+    padding: 6px 10px 6px 6px;
+    background: #fff;
+}
+
+.btn-default {
+    background: #696969;
+}
+
+.shiny-notification {
+    font-family: "Open Sans", sans-serif;
+}
