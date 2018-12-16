@@ -45,7 +45,8 @@ state_color <- "#56B4E9" # sky blue
 district_color <- "#009E73" # bluish green
 spinner_color <- "#D9230F" # matches shiny theme
 
-my_map_tile <- "https://api.mapbox.com/styles/v1/seanangio/cjp3l0a5b0um42rpgxx1krirk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2VhbmFuZ2lvIiwiYSI6ImNqbDM3ZDA2MzF5Znkzd3F0cGVrZ2p2aGsifQ.8GljGBJeyKvFC61bSCTdQg"
+my_map_tile <- paste0("https://api.mapbox.com/styles/v1/seanangio/cjp3l0a5b0um42rpgxx1krirk/tiles/256/{z}/{x}/{y}?access_token=", 
+                      Sys.getenv("MAPBOX_TOKEN"))
 
 # Functions to display correct UI options --------------------------------------
 
