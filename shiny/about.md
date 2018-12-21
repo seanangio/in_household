@@ -1,3 +1,15 @@
+### Objectives
+
+In creating this visualization, my objective was to provide a much-needed spatial, temporal, and social context to accompany key development indicators in India (access to electricity, latrines and water). A single-number summary, for example one describing household access to electricity, falls far short in adequately describing the reality for most Indians. In a country as diverse as India, defining what is "typical" is quite challenging.
+
+For example, if told that, according to the 2011 census, 67% of Indian households have access to electricity, a few questions should accompany that metric. First, what is the distribution behind that summary statistic? What are the corresponding figures if we instead aggregate at sub-national levels-- such as the state, district, or even sub-district levels? Moreover, how does this distribution vary in geographic space? What are the regional trends?
+
+In addition to spatial context, we would also want to have a sense of the accompanying temporal context. What is the pace of progress? An absolute figure of 67% will assume a completely different connotation if the previous census figure was 65% as opposed to 55%.
+
+Finally, we would want to cross-tabulate this figure of 67% from as many sub-societal filters as possible. How do urban households differ from rural households? How do SC or ST households differ from the total population? How might water access be related to electricity or latrine access?
+
+As users explore this visualization, I hope it can provide a greater level of context than is often readily available and perhaps spark further investigation into the relationships underpinning these metrics.
+
 ### Data Source
 
 All of the raw data for this visualisation comes from the Government of India's
@@ -26,6 +38,7 @@ Lastly, I was unable to successfully read in the 1991 SC and ST files for Bihar.
 Huge thanks to the authors and maintainers of all of the R packages used to make this visualisation, especially the `tidyverse`, `shiny`, `sf`, `leaflet`, `leaflet.extras`, `shinyWidgets`, `shinythemes`, and `shinycssloaders`.
 
 ### Further Information
+
 The R scripts wrangling the data and creating the visualisation can be found on <a href="https://github.com/seanangio/in_household/" target="_blank">Github</a>. 
 
 An exploration into the key findings, visualisation choices, and challenges can be found in a blog post for [Social Cops]().
