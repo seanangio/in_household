@@ -20,8 +20,8 @@ viz_opts <- c("Choropleth", "Proportional Symbols",
 
 clat <- 22.5
 clon <- 82.5
-key <- "pk.eyJ1Ijoic2VhbmFuZ2lvIiwiYSI6ImNqbDM3ZDA2MzF5Znkzd3F0cGVrZ2p2aGsifQ.8GljGBJeyKvFC61bSCTdQg"
-streets_tileset <- "mapbox://styles/seanangio/cjtlzk1cz29rs1fl5xnznx436"
+key <- "YOUR_KEY_HERE"
+streets_tileset <- "YOUR_TILES"
 
 legend_height <- "max-height: 300px;"
 my_fill_opacity <- 200
