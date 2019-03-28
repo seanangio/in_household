@@ -5,7 +5,7 @@ source("global.R")
 shinyServer(function(input, output, session) {
     session$onSessionEnded(stopApp)
     
-    set_token(key)
+    set_token(Sys.getenv("MAPBOX"))
     
     # render base map
     map_base <- reactive({

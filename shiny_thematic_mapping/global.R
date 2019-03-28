@@ -20,8 +20,6 @@ viz_opts <- c("Choropleth", "Proportional Symbols",
 
 clat <- 22.5
 clon <- 82.5
-key <- "YOUR_KEY_HERE"
-streets_tileset <- "YOUR_TILES"
 
 legend_height <- "max-height: 300px;"
 my_fill_opacity <- 200
@@ -46,7 +44,7 @@ get_category <- function(var) {
 
 draw_base_map <- function() {
     mapdeck(
-        style = streets_tileset
+        style = Sys.getenv("MAPBOX_STREETS")
         , zoom = 4
         , location = c(clon, clat)
     )
@@ -70,18 +68,19 @@ choose_obs <- function(v, var, yr, society, demo) {
         )
 }
 
-
 update_map <- function(mymap, sf, vars, v) {
     
-    m <- mapdeck_update(map_id = mymap) %>% 
-        clear_polygon(layer_id = "layer") %>%
-        clear_scatterplot(layer_id = "layer")
+    m <- mapdeck_update(map_id = mymap)
     
     if (v == "Choropleth") {
         m %>% 
+            # clear any other layers besides this one
+            clear_polygon( layer_id = "3d_choropleth" ) %>%
+            clear_scatterplot( layer_id = "dot_density") %>%
+            clear_scatterplot( layer_id = "proportional") %>%
             add_polygon(
                 data = sf
-                , layer = "layer"
+                , layer = "choropleth"
                 , fill_colour = vars[2]
                 , fill_opacity = my_fill_opacity
                 , tooltip = "district_abb"
@@ -100,12 +99,15 @@ update_map <- function(mymap, sf, vars, v) {
         
     } else if (v == "Proportional Symbols") {
         m %>% 
+            clear_polygon( layer_id = "choropleth" ) %>%
+            clear_polygon( layer_id = "3d_choropleth" ) %>%
+            clear_scatterplot( layer_id = "dot_density") %>%
             add_scatterplot(
                 data = sf %>% st_set_geometry(.$CENTROID)
                 , radius = vars[3]
                 , fill_colour = vars[2]
                 , fill_opacity = my_fill_opacity
-                , layer_id = "layer"
+                , layer_id = "proportional"
                 , tooltip = "district_abb"
                 , update_view = FALSE
                 , legend = TRUE
@@ -117,22 +119,28 @@ update_map <- function(mymap, sf, vars, v) {
         
     } else if (v == "Dot Density") {
         m %>%
+            clear_polygon( layer_id = "choropleth" ) %>%
+            clear_polygon( layer_id = "3d_choropleth" ) %>%
+            clear_scatterplot( layer_id = "proportional") %>%
             add_scatterplot(
                 data = sf
                 , radius = dot_radius
-                , layer_id = "layer"
+                , layer_id = "dot_density"
                 , update_view = FALSE
                 , legend = FALSE
                 , legend_options = list(
                     css = legend_height
                 )
             )
-
+        
     } else { # 3d choropleth
         m %>%
+            clear_polygon( layer_id = "choropleth" ) %>%
+            clear_scatterplot( layer_id = "dot_density") %>%
+            clear_scatterplot( layer_id = "proportional") %>%
             add_polygon(
                 data = sf
-                , layer = "layer"
+                , layer = "3d_choropleth"
                 , fill_colour = vars[2]
                 , fill_opacity = my_fill_opacity
                 , elevation = vars[1]
@@ -145,5 +153,3 @@ update_map <- function(mymap, sf, vars, v) {
             )
     }
 }
-
-
