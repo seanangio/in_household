@@ -1,0 +1,10 @@
+## change working directory
+'/Users/seanangiolillo/Library/Mobile Documents/com~apple~CloudDocs/in_household/sql'
+
+## import shapefiles to postgresql
+
+shp2pgsql -I -s 4326 -W Latin1 district_shapes.shp district_shapes | psql -d in_household -U postgres
+
+shp2pgsql -I -s 4326 -W Latin1 state_shapes.shp state_shapes | psql -d in_household -U postgres
+
+shp2pgsql -I -s 4326 -W Latin1 electricity_latrine_dots.shp electricity_latrine_dots | psql -d in_household -U postgres
